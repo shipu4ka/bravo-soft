@@ -8,6 +8,8 @@ export const api = {
     axios.get(`${BASE_URL}/constructors`),
   getApplications: (): Promise<AxiosResponse<IApplication[]>> =>
     axios.get(`${BASE_URL}/applications`),
-  createNewApplication: (data: IApplication) =>
+  createNewApplication: (
+    data: IApplication
+  ): Promise<AxiosResponse<IApplication>> =>
     axios.post(`${BASE_URL}/applications`, data),
 };
