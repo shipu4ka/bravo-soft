@@ -1,11 +1,12 @@
 import { Button, Form, Input, message } from "antd";
-import { api } from "../api";
+import { api } from "../../api";
 import { FC, useContext } from "react";
-import { IConstructor } from "../models";
-import { GlobalContext } from "../ContextProvider";
+import { IConstructor } from "../../models";
+import { GlobalContext } from "../../ContextProvider";
 import { useNavigate } from "react-router-dom";
+import "./AuthPages.css";
 
-export const RegistrationForm: FC = () => {
+export const RegistrationPage: FC = () => {
   const { constructors, setConstructors, setCurrentUser } =
     useContext(GlobalContext);
 
@@ -15,9 +16,7 @@ export const RegistrationForm: FC = () => {
     name,
   }: Pick<IConstructor, "name">): Promise<void | undefined> => {
     if (constructors.map((constructor) => constructor.name).includes(name)) {
-      message.error(
-        "Вы уже зарегистрированы в системе! Воспользуйтесь кнопкой 'Войти'"
-      );
+      message.error("Вы уже зарегистрированы в системе! Выполните вход.");
       return;
     }
 
@@ -44,7 +43,7 @@ export const RegistrationForm: FC = () => {
   };
 
   return (
-    <Form onFinish={handleSubmit}>
+    <Form className="login-form" onFinish={handleSubmit}>
       <Form.Item
         label="ФИО"
         name="name"

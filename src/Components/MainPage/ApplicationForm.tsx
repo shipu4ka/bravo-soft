@@ -1,8 +1,9 @@
 import { Button, Form, Input, message, Select } from "antd";
 import { FC, useContext } from "react";
-import { IApplication } from "../models";
-import { api } from "../api";
-import { GlobalContext } from "../ContextProvider";
+import { IApplication } from "../../models";
+import { api } from "../../api";
+import { GlobalContext } from "../../ContextProvider";
+import "./MainPage.css";
 
 export const ApplicationForm: FC = () => {
   const { constructors, applications, setApplications } =
@@ -47,7 +48,12 @@ export const ApplicationForm: FC = () => {
   };
 
   return (
-    <Form onFinish={handleSubmit}>
+    <Form
+      className="application-form"
+      onFinish={handleSubmit}
+      labelCol={{ span: 8 }}
+      wrapperCol={{ span: 16 }}
+    >
       <Form.Item
         name="constructorId"
         label="ФИО конструктора"
@@ -70,11 +76,11 @@ export const ApplicationForm: FC = () => {
         <Input placeholder="Введите наименование документа" />
       </Form.Item>
 
-      <Form.Item>
+      <div className="btn-wrapper">
         <Button type="primary" htmlType="submit">
           Отправить
         </Button>
-      </Form.Item>
+      </div>
     </Form>
   );
 };

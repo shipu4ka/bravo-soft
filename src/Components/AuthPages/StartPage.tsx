@@ -1,8 +1,9 @@
 import { Button, Form, Input, message } from "antd";
-import { IConstructor } from "../models";
+import { IConstructor } from "../../models";
 import { useContext } from "react";
-import { GlobalContext } from "../ContextProvider";
+import { GlobalContext } from "../../ContextProvider";
 import { useNavigate } from "react-router-dom";
+import "./AuthPages.css";
 
 export const StartPage = () => {
   const { constructors, setCurrentUser } = useContext(GlobalContext);
@@ -24,7 +25,7 @@ export const StartPage = () => {
   };
 
   return (
-    <Form onFinish={handleSubmit}>
+    <Form className="login-form" onFinish={handleSubmit}>
       <Form.Item
         label="ФИО"
         name="name"

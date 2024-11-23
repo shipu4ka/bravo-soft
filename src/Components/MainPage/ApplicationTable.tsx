@@ -1,6 +1,6 @@
 import { Table, TableColumnsType } from "antd";
 import { FC, useContext } from "react";
-import { GlobalContext } from "../ContextProvider";
+import { GlobalContext } from "../../ContextProvider";
 
 interface IDataType {
   key: React.Key;

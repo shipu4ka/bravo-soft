@@ -1,0 +1,12 @@
+.main {
+  padding: 20px;
+
+  .application-form {
+    padding-top: 20px;
+  }
+
+  .btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
