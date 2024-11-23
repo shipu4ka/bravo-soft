@@ -17,7 +17,7 @@ export const RegistrationPage: FC = () => {
   const handleSubmit = async ({
     name,
   }: Pick<IConstructor, "name">): Promise<void | undefined> => {
-    if (constructors.map((constructor) => constructor.name).includes(name)) {
+    if (constructors.some((constructor) => constructor.name === name)) {
       message.error("Вы уже зарегистрированы в системе! Выполните вход.");
       form.resetFields();
       return;
@@ -32,7 +32,7 @@ export const RegistrationPage: FC = () => {
       const { data } = await api.createConstructor(newConstructor);
       setConstructors([...constructors, data]);
       setCurrentUser(name);
-      await message.success("Вы успешно зарегистрированы");
+      message.success("Вы успешно зарегистрированы");
       navigate("/main");
     } catch (error) {
       let errorMessage = "";

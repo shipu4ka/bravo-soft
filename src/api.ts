@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { IApplication, IConstructor } from "./models";
 
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = "https://booger1.myjino.ru";
 
 export const api = {
   getConstructors: (): Promise<AxiosResponse<IConstructor[]>> =>
