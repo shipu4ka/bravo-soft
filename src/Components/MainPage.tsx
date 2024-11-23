@@ -1,6 +1,7 @@
 import { Tabs } from "antd";
 import { ApplicationForm } from "./ApplicationForm";
 import { ApplicationTable } from "./ApplicationTable";
+import { Header } from "./Header/Header";
 
 export const MainPage = () => {
   const items = [
@@ -16,5 +17,12 @@ export const MainPage = () => {
     },
   ];
 
-  return <Tabs defaultActiveKey="1" items={items} />;
+  return (
+    <>
+      <Header />
+      <main>
+        <Tabs defaultActiveKey="1" items={items} />
+      </main>
+    </>
+  );
 };

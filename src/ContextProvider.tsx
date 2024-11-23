@@ -6,6 +6,8 @@ interface IGlobalContext {
   setConstructors: (arg: IConstructor[]) => void;
   applications: IApplication[];
   setApplications: (arg: IApplication[]) => void;
+  currentUser: string;
+  setCurrentUser: (arg: string) => void;
 }
 
 export const GlobalContext = createContext<IGlobalContext>({
@@ -13,4 +15,6 @@ export const GlobalContext = createContext<IGlobalContext>({
   setConstructors: () => {},
   applications: [],
   setApplications: () => {},
+  currentUser: "",
+  setCurrentUser: () => {},
 });

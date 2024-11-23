@@ -6,7 +6,8 @@ import { GlobalContext } from "../ContextProvider";
 import { useNavigate } from "react-router-dom";
 
 export const RegistrationForm: FC = () => {
-  const { constructors, setConstructors } = useContext(GlobalContext);
+  const { constructors, setConstructors, setCurrentUser } =
+    useContext(GlobalContext);
 
   const navigate = useNavigate();
 
@@ -28,6 +29,7 @@ export const RegistrationForm: FC = () => {
     try {
       const { data } = await api.createConstructor(newConstructor);
       setConstructors([...constructors, data]);
+      setCurrentUser(name);
       await message.success("Вы успешно зарегистрированы");
       navigate("/main");
     } catch (error) {

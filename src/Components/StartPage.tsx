@@ -5,7 +5,7 @@ import { GlobalContext } from "../ContextProvider";
 import { useNavigate } from "react-router-dom";
 
 export const StartPage = () => {
-  const { constructors } = useContext(GlobalContext);
+  const { constructors, setCurrentUser } = useContext(GlobalContext);
   const navigate = useNavigate();
 
   const handleSubmit = async ({
@@ -19,6 +19,7 @@ export const StartPage = () => {
       message.error("Пользователь не найден. Зарегистрируйтесь.");
       return;
     }
+    setCurrentUser(name);
     navigate("/main");
   };
 

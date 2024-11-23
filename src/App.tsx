@@ -9,6 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 const App = () => {
   const [constructors, setConstructors] = useState<IConstructor[]>([]);
   const [applications, setApplications] = useState<IApplication[]>([]);
+  const [currentUser, setCurrentUser] = useState<string>("");
 
   useEffect(() => {
     api.getConstructors().then((response) => setConstructors(response.data));
@@ -17,7 +18,14 @@ const App = () => {
 
   return (
     <GlobalContext.Provider
-      value={{ constructors, setConstructors, applications, setApplications }}
+      value={{
+        constructors,
+        setConstructors,
+        applications,
+        setApplications,
+        currentUser,
+        setCurrentUser,
+      }}
     >
       <BrowserRouter>
         <AppRouter />
