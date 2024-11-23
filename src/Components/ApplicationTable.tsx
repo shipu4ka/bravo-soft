@@ -1,9 +1,6 @@
 import { Table, TableColumnsType } from "antd";
-import { FC } from "react";
-
-interface IProps {
-  documents: string[];
-}
+import { FC, useContext } from "react";
+import { GlobalContext } from "../ContextProvider";
 
 interface IDataType {
   key: React.Key;
@@ -11,7 +8,11 @@ interface IDataType {
   count: number;
 }
 
-export const ApplicationTable: FC<IProps> = ({ documents }) => {
+export const ApplicationTable: FC = () => {
+  const { applications } = useContext(GlobalContext);
+
+  const documents = applications.map((app) => app.documentName);
+
   const repeatingDocs = documents.reduce(
     (acc: Record<string, number>, item) => {
       acc[item] = (acc[item] || 0) + 1;

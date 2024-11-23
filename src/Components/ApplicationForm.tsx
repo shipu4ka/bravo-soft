@@ -1,19 +1,13 @@
 import { Button, Form, Input, message, Select } from "antd";
-import { FC } from "react";
-import { IApplication, IConstructor } from "../models";
+import { FC, useContext } from "react";
+import { IApplication } from "../models";
 import { api } from "../api";
+import { GlobalContext } from "../ContextProvider";
 
-interface IProps {
-  constructors: IConstructor[];
-  applications: IApplication[];
-  setApplications: (arg: IApplication[]) => void;
-}
+export const ApplicationForm: FC = () => {
+  const { constructors, applications, setApplications } =
+    useContext(GlobalContext);
 
-export const ApplicationForm: FC<IProps> = ({
-  constructors,
-  applications,
-  setApplications,
-}) => {
   const handleSubmit = async ({
     constructorId,
     documentName,
@@ -38,7 +32,7 @@ export const ApplicationForm: FC<IProps> = ({
     };
 
     try {
-      const { data } = await api.createNewApplication(newApplication);
+      const { data } = await api.createApplication(newApplication);
       message.success("Заявка успешно отправлена");
       setApplications([...applications, data]);
     } catch (error) {
