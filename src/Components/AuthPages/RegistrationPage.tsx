@@ -54,16 +54,13 @@ export const RegistrationPage: FC = () => {
       >
         <Input placeholder="Введите Фамилию И.О." />
       </Form.Item>
-
-      <Form.Item>
+      <div className="btns-wrapper">
         <Button type="primary" htmlType="submit">
           Зарегистрироваться
         </Button>
-      </Form.Item>
 
-      <Form.Item>
         <Button onClick={() => navigate("/")}>Выполнить вход</Button>
-      </Form.Item>
+      </div>
     </Form>
   );
 };

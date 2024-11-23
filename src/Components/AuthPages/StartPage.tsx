@@ -36,15 +36,13 @@ export const StartPage = () => {
         <Input placeholder="Введите Фамилию И.О." />
       </Form.Item>
 
-      <Form.Item>
+      <div className="btns-wrapper">
         <Button type="primary" htmlType="submit">
           Войти
         </Button>
-      </Form.Item>
 
-      <Form.Item>
         <Button onClick={() => navigate("/registration")}>Регистрация</Button>
-      </Form.Item>
+      </div>
     </Form>
   );
 };
