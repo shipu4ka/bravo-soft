@@ -12,11 +12,14 @@ export const RegistrationPage: FC = () => {
 
   const navigate = useNavigate();
 
+  const [form] = Form.useForm();
+
   const handleSubmit = async ({
     name,
   }: Pick<IConstructor, "name">): Promise<void | undefined> => {
     if (constructors.map((constructor) => constructor.name).includes(name)) {
       message.error("Вы уже зарегистрированы в системе! Выполните вход.");
+      form.resetFields();
       return;
     }
 
@@ -43,7 +46,7 @@ export const RegistrationPage: FC = () => {
   };
 
   return (
-    <Form className="login-form" onFinish={handleSubmit}>
+    <Form className="login-form" onFinish={handleSubmit} form={form}>
       <Form.Item
         label="ФИО"
         name="name"

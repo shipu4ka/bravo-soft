@@ -8,6 +8,7 @@ import "./MainPage.css";
 export const ApplicationForm: FC = () => {
   const { constructors, applications, setApplications } =
     useContext(GlobalContext);
+  const [form] = Form.useForm();
 
   const handleSubmit = async ({
     constructorId,
@@ -23,6 +24,7 @@ export const ApplicationForm: FC = () => {
       message.error(
         "Вы уже отправляли заявку на этот документ, она уже была учтена"
       );
+      form.resetFields();
       return;
     }
 
@@ -36,6 +38,7 @@ export const ApplicationForm: FC = () => {
       const { data } = await api.createApplication(newApplication);
       message.success("Заявка успешно отправлена");
       setApplications([...applications, data]);
+      form.resetFields();
     } catch (error) {
       let errorMessage = "";
       if (typeof error === "string") {
@@ -49,6 +52,7 @@ export const ApplicationForm: FC = () => {
 
   return (
     <Form
+      form={form}
       className="application-form"
       onFinish={handleSubmit}
       labelCol={{ span: 8 }}

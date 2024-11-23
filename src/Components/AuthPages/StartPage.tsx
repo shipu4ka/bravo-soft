@@ -8,6 +8,7 @@ import "./AuthPages.css";
 export const StartPage = () => {
   const { constructors, setCurrentUser } = useContext(GlobalContext);
   const navigate = useNavigate();
+  const [form] = Form.useForm();
 
   const handleSubmit = async ({
     name,
@@ -18,6 +19,7 @@ export const StartPage = () => {
 
     if (!existingConstructor) {
       message.error("Пользователь не найден. Зарегистрируйтесь.");
+      form.resetFields();
       return;
     }
     setCurrentUser(name);
@@ -25,7 +27,7 @@ export const StartPage = () => {
   };
 
   return (
-    <Form className="login-form" onFinish={handleSubmit}>
+    <Form className="login-form" onFinish={handleSubmit} form={form}>
       <Form.Item
         label="ФИО"
         name="name"
